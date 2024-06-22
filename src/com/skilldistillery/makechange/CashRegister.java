@@ -1,5 +1,6 @@
 package com.skilldistillery.makechange;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class CashRegister {
@@ -14,6 +15,8 @@ public class CashRegister {
 		
 		double change = getChange(price, amount);
 		System.out.println(change);
+		
+		makeDenomination(price, amount);
 		scan.close();
 	}
 	
@@ -30,5 +33,33 @@ public class CashRegister {
 		change = amount - price;
 		}
 		return change;
+	}
+	
+	public static void makeDenomination(double price, double amount) {
+		DecimalFormat df = new DecimalFormat("#.00");
+		double change = amount - price;
+		
+		int bills = (int) (change);
+		double coins = (change - bills);
+		System.out.println(df.format(coins));
+		
+		
+		int hundreds = (bills / 100);
+		bills %= 100;
+		System.out.println(hundreds + " hundreds");
+		int fifties = (bills / 50); 
+		bills %= 50;
+		System.out.println(fifties + " fifties");
+		int twenties = (bills / 20); 
+		bills %= 20;
+		System.out.println(twenties + " twenties");
+		int tens = (bills / 10); 
+		bills %= 10;
+		System.out.println(tens + " tens");
+		int fives = (bills / 5);
+		bills %= 5;
+		System.out.println(fives + " fives");
+		int ones = bills;
+		System.out.println(ones + " ones");
 	}
 }
