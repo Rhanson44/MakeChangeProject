@@ -22,6 +22,7 @@ Methods: modulus operator, console input/output, method arguments and parameters
 
 ### Lessons Learned
 Primary take-away: implementation of modulus operator and casting to determine specific values of an integer
+
 Additional lessons:
 - Organization of code through methods
 - Usage of DecimalFormat subclass
