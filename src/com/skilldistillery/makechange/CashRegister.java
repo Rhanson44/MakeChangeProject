@@ -16,18 +16,20 @@ public class CashRegister {
 		double amount = scan.nextDouble();
 		
 		double change = getChange(price, amount);
-		System.out.println("Your change is: " + df.format(change));
-		
-		makeDenomination(change);
-		
-		System.out.println("Thanks! Have a great day!");
+		if (change > 0) {
+			System.out.println("Your change is: " + df.format(change));
+			makeDenomination(change);
+			System.out.println("Thanks! Have a great day!");
+		}
 		scan.close();
 	}
 	
 	public static double getChange(double price, double amount) {
 		double change = 0.0;
-		if (price <= amount) {
+		if (price < amount) {
 			change = amount - price;
+		} else if(price == amount) {
+			System.out.println("No change, have a great day!");
 		} else {
 			while(price > amount) {
 			System.err.println("Invalid payment amount, please enter a valid input");
